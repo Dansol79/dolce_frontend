@@ -5,8 +5,8 @@
 /build
 /.pnp
 .pnp.js
-.env.production
-.env.development
+/.env.production
+/.env.development
 
 # testing
 /coverage
