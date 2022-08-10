@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useContext } from 'react'
 import clienteAxios from '../../config/axios';
 import { useNavigate } from 'react-router-dom';
@@ -12,8 +11,8 @@ const Login = () => {
     const [credenciales, guardarCredenciales] = useState({})
 
     //usar el contexto
-    const [auth, guardarAuth] = useContext(CMRcontext);
-
+    const [autenticar, guardarAuth]  = useContext(CMRcontext);
+    console.log(autenticar);
     //almacenar lo que el usuario escribe en el formulario
 
     const iniciarSesion = async e => {
@@ -28,14 +27,16 @@ const Login = () => {
             const {token} = repuesta.data;
             localStorage.setItem('token', token);
 
-            // Actualizar el state de auth
+            // Actualizar el state de autenticar
             guardarAuth({
                 token,
-                auth: true
-            });
-
+                autenticar:true
+            })
+        
             //enviar alerta y ridireccionar
             Swal.fire('Bienvenido', 'Has iniciado sesión correctamente', 'success');
+          
+
 
             navegate('/');
 
@@ -45,7 +46,7 @@ const Login = () => {
                     type: 'error',
                     title: 'Hubo un error',
                     text: error.response.data.mensaje  
-               })
+               })   
             }else{
                 Swal.fire({
                     type: 'error',

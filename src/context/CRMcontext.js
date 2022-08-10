@@ -1,16 +1,16 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, createContext} from 'react'
 
-const CMRcontext = React.createContext([{}, () => {}]);
+const CMRcontext = createContext([{}, () => {}]);
 const CMRprovider = props => {
     //definir el state inicial
-    const [auth, guardarAuth] = useState({
-        token: '',
-        auth: false,
+    const [autenticar, guardarAuth ] = useState({
+        token:'',
+        autenticar:false,
     });
-
+  
     return(
-        <CMRcontext.Provider value={[auth, guardarAuth]}>
+        <CMRcontext.Provider value={[autenticar, guardarAuth]}>
             {props.children}
         </CMRcontext.Provider>
     )

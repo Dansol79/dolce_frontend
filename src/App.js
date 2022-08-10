@@ -27,12 +27,12 @@ function App() {
 
   //Utilizar el contexto de CRMcontext.js
 
-  const [auth, guardarAuth] = useContext(CMRcontext);
+  const [autenticar, guardarAuth] = useContext(CMRcontext);
   return (
 
     <BrowserRouter>
       <>
-        <CMRprovider value={[auth, guardarAuth]}>
+        <CMRprovider value={[autenticar, guardarAuth]}>
         <Header />
         <div className="grid contenedor contenido-principal">
 

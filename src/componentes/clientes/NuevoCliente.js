@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const NuevoCliente = () => {
     const navegate = useNavigate();
 
-    const [auth, guardarAuth] = useContext(CMRcontext);
+    const [autenticar, guardarAuth] = useContext(CMRcontext);
 
     //cliente = state, guardarCliente = funcion para guardar el cliente
     const [cliente, guardarCliente] = useState({
@@ -73,7 +73,7 @@ const NuevoCliente = () => {
     }
 
     //Verificar si el usuario esta autenticado
-    if (!auth.auth) {
+    if (!autenticar.autenticar) {
         navegate('/iniciar-sesion');
     }
     

@@ -10,7 +10,8 @@ import Producto from './Producto'
 const Productos = () => {
   const navegate = useNavigate();
 
-  const [auth, guardarAuth] = useContext(CMRcontext);
+  const [autenticar, guardarAuth] = useContext(CMRcontext);
+  console.log(autenticar);
 
   //Productos = al state, guardarProductos = a la funcion para guaradar el state
   const [productos, guardarProductos] = useState([])
@@ -18,13 +19,13 @@ const Productos = () => {
   // UseEffect para consultar la API
   useEffect(() => {
     // Consultar la API  = query a la api
-    if (auth.token !== '') {
+    if (autenticar.token !== '') {
       const consultarApi = async () => {
 
         try {
           const productosConsulta = await clienteAxios.get('/productos', {
             headers: {
-              Authorization: `Bearer ${auth.token}`
+              Authorization: `Bearer ${autenticar.token}`
             }
             });
           guardarProductos(productosConsulta.data)
@@ -41,9 +42,9 @@ const Productos = () => {
       navegate('/iniciar-sesion')
 
     }
-  }, [productos])
+  },[]);
 
-  if(!auth.auth){
+  if(!autenticar.autenticar){
     navegate('/iniciar-sesion');
   }
 

@@ -7,13 +7,13 @@ import { CMRcontext } from '../../context/CRMcontext'
 const Header = () => {
 
     const navegate = useNavigate();
-    const [auth, guardarAuth] = useContext(CMRcontext);
+    const [autenticar, guardarAuth] = useContext(CMRcontext);
 
     const cerrarSesion = () => {
         //auth.auth = false el token se borra 
         guardarAuth({
             token: '',
-            auth: false,
+            autenticar: false,
         });
         localStorage.setItem('token', '');
         
@@ -27,7 +27,7 @@ const Header = () => {
                     <div className='contenido-barra'>
                         <h1>Dolce Ragaza - Administrador de Clientes</h1>
 
-                        {auth.auth ? (
+                        {autenticar.autenticar ? (
                             <button 
                                 className='btn btn-rojo' 
                                 type='button'

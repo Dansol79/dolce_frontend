@@ -18,18 +18,18 @@ const Clientes = () => {
   const [clientes, guardarClientes] = useState([])
 
   //usar el contexto
-  const [auth, guardarAuth] = useContext(CMRcontext);
-
+  const [autenticar, guardarAuth] = useContext(CMRcontext);
+ 
   //Query a la API o consulta a la API
 
   useEffect(() => {
-    if (auth.token !== '') {
+    if (autenticar.token !== '') {
       const consultarAPI = async () => {
         try {
           //Consultar la API
           const clientesConsulta = await clienteAxios.get('/clientes', {
             headers: {
-              Authorization: `Bearer ${auth.token}`
+              Authorization: `Bearer ${autenticar.token}`
             }
           })
           // console.log(consultaClientes.data)
@@ -51,7 +51,7 @@ const Clientes = () => {
 
   }, []);
 
-  if(!auth.auth){
+  if(!autenticar.autenticar){
     navegate('/iniciar-sesion');
   }
 

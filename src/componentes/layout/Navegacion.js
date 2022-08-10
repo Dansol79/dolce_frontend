@@ -6,9 +6,9 @@ import { CMRcontext } from '../../context/CRMcontext'
 
 const Navegacion = () => {
 
-    const [auth, guardarAuth] = useContext(CMRcontext);
+    const [autenticar, guardarAuth] = useContext(CMRcontext);
 
-    if(!auth.auth) return null;
+    if(!autenticar.autenticar) return null;
     return (
         <aside className="sidebar col-3">
             <h2>Administración</h2>

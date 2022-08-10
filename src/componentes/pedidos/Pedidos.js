@@ -10,12 +10,13 @@ const Pedidos = () => {
 
   const navegate = useNavigate();
   const [pedidos, guardarPedidos] = useState([]);
-  const [auth, guardarAuth] = useContext(CMRcontext);
+  const [autenticar, guardarAuth] = useContext(CMRcontext);
+  
 
 
   useEffect(() => {
 
-    if (auth.token !== '') {
+    if (autenticar.token !== '') {
     const consultarAPi = async () => {
       //Obtenemos todos los pedidos
       const resultado = await clienteAxios.get('/pedidos');
